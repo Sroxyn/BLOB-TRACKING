@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-0: #060607;
+  --color-ink-1: #0a0a0b;
+  --color-ink-2: #101012;
+  --color-ink-3: #17171a;
+  --color-ink-4: #202024;
+  --color-line: #26262b;
+  --color-line-soft: #1b1b1f;
+  --color-dim: #6a6a73;
+  --color-fg: #d7d7db;
+  --color-fg-soft: #9a9aa3;
+  --color-accent: #00ff41;
+
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", "Courier New", monospace;
+  --default-transition-duration: 110ms;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --accent: #00ff41;
+  }
+  html, body, #root { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--color-ink-1);
+    color: var(--color-fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+  ::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+  input, button, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+}
+
+@layer utilities {
+  .accent { color: var(--accent); }
+  .tabnum { font-variant-numeric: tabular-nums; }
+  .no-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .no-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .no-scrollbar::-webkit-scrollbar-thumb { background: #2a2a30; border-radius: 3px; }
+  .no-scrollbar:hover::-webkit-scrollbar-thumb { background: #3a3a42; }
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #0e0e10 25%, transparent 25%),
+      linear-gradient(-45deg, #0e0e10 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #0e0e10 75%),
+      linear-gradient(-45deg, transparent 75%, #0e0e10 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: #0a0a0b;
+  }
+}
